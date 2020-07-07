@@ -1,6 +1,9 @@
 name: Actions workflow
 
-on: [push, pull_request]
+on: 
+  push:
+  pull_request:
+    types: [closed, assigned, opend, reopened]
 
 jobs:
   run-github-actions:
@@ -23,3 +26,5 @@ jobs:
         run: |
           pwd
           ls -a
+      - name: Show environment variables
+        run: echo "GITHUB_WORKFLOW:$GITHUB_WORKFLOW, CI:$CI, GITHUB_RUN_ID:$GITHUB_RUN_ID, GITHUB_RUN_NUMBER:$GITHUB_RUN_NUMBER,GITHUB_ACTION:$GITHUB_ACTION, GITHUB_ACTIONS:$GITHUB_ACTIONS,GITHUB_ACTOR:$GITHUB_ACTORS,GTIHUB_REPOSITORY:$GITHUB_REPOSITORY"
